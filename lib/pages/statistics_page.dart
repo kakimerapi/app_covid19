@@ -14,88 +14,92 @@ class _StatisticPageState extends State<StatisticPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      body: Stack(
-        children: <Widget>[
-          Container(
-            height: 275,
-            decoration: BoxDecoration(
-              color: AppColors.mainColor,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25),
+      // SingleChildScrollView solves bottom overflow error 
+      body: SingleChildScrollView(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: 275,
+              decoration: BoxDecoration(
+                color: AppColors.mainColor,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(25),
+                  bottomRight: Radius.circular(25),
+                ),
               ),
+              padding: EdgeInsets.only(top: 25),
+              child: Image.asset("assets/images/virus2.png"),
             ),
-            padding: EdgeInsets.only(top: 25),
-            child: Image.asset("assets/images/virus2.png"),
-          ),
-          Container(
-            padding: EdgeInsets.only(top: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                CustomAppBarWidget(),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    "STATISTICS",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 32,
+            Container(
+              padding: EdgeInsets.only(top: 25),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  CustomAppBarWidget(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      "STATISTICS",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 32,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: 25),
-                _buildStatistic(),
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: _buildGender(FlutterIcons.male,
-                            Colors.orangeAccent, "MALE", "59.5%"),
-                      ),
-                      SizedBox(width: 16),
-                      Expanded(
-                        child: _buildGender(FlutterIcons.female,
-                            Colors.pinkAccent, "FEMALE", "40.5%"),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 16),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: RichText(
-                    text: TextSpan(
-                      text: "Global Cases of ",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                        color: Colors.black87,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "COVID 19",
-                          style: TextStyle(
-                            color: AppColors.mainColor,
-                          ),
+                  SizedBox(height: 25),
+                  _buildStatistic(),
+                  Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: _buildGender(FlutterIcons.male,
+                              Colors.orangeAccent, "MALE", "59.5%"),
+                        ),
+                        SizedBox(width: 16),
+                        Expanded(
+                          child: _buildGender(FlutterIcons.female,
+                              Colors.pinkAccent, "FEMALE", "40.5%"),
                         ),
                       ],
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Container(
-                    height: 170,
-                    child: Center(child: Image.asset("assets/images/map.png")),
+                  SizedBox(height: 16),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Global Cases of ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Colors.black87,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "COVID 19",
+                            style: TextStyle(
+                              color: AppColors.mainColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          )
-        ],
+                  Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Container(
+                      height: 170,
+                      child:
+                          Center(child: Image.asset("assets/images/map.png")),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
